@@ -1,4 +1,6 @@
 var Genre = require('../models/genre');
+var Book = require('../models/book');
+var async = require('async');
 
 // Display list of all Genre.
 exports.genre_list = function(req, res) {
