@@ -17,17 +17,15 @@ exports.genre_list = function(req, res) {
 
 // Display detail page for a specific Genre.
 exports.genre_detail = function(req, res, next) {
-  
-    var id = mongoose.Types.ObjectId(req.params.id);
 
     async.parallel({
         genre: function(callback) {
-            Genre.findById(id)
+            Genre.findById(req.params.id)
               .exec(callback);
         },
 
         genre_books: function(callback) {
-          Book.find({ 'genre': id })
+          Book.find({ 'genre': req.params.id })
           .exec(callback);
         },
 
